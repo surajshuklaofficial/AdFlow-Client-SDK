@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider, RouteObject } from 'react-router-d
 
 import App from './App';
 import { LandingPage } from './pages';
+import { Login, Signup } from './features';
 
 const routerConfig: RouteObject[] = [
   {
@@ -13,6 +14,14 @@ const routerConfig: RouteObject[] = [
         index: true,
         element: <LandingPage  />
       },
+      {
+        path: "/signup",
+        element: <Signup />
+      },
+      {
+        path: "/login",
+        element: <Login />
+      }
     ],
   },
 ];
