@@ -1,0 +1,13 @@
+{
+  "users": [
+    {
+      "firstName": "suraj",
+      "lastName": "",
+      "email": "surajshukla7656@gmail.com",
+      "password": "123",
+      "role": "advertiser",
+      "id": 1
+    }
+  ],
+  "ads": []
+}

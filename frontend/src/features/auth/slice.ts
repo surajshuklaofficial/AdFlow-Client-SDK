@@ -1,38 +1,78 @@
-import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '../../app/store'
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+// import type { PayloadAction } from "@reduxjs/toolkit";
+import type { RootState } from "../../app/store";
+
+import { signin, signup, UserAuthInfo } from "../../app/api";
 
 // Define a type for the slice state
-interface CounterState {
-  value: number
+interface authState {
+  token: string;
+  status: "idle" | "loading";
+  error: string
 }
 
 // Define the initial state using that type
-const initialState: CounterState = {
-  value: 0,
-}
+const initialState: authState = {
+  token: "",
+  status: "idle",
+  error: ""
+};
 
-export const counterSlice = createSlice({
-  name: 'counter',
-  // `createSlice` will infer the state type from the `initialState` argument
+export const signupAsync = createAsyncThunk(
+  "auth/signup",
+  async (userAuthInfo: UserAuthInfo) => {
+    const response = await signup(userAuthInfo);
+    return response.data;
+  }
+);
+
+export const signinAsync = createAsyncThunk(
+  "auth/signin",
+  async (userAuthInfo: UserAuthInfo) => {
+    const response = await signin(userAuthInfo);
+    return response.data[0]; // temporary authentication
+  }
+);
+
+export const authSlice = createSlice({
+  name: "auth",
   initialState,
   reducers: {
     increment: (state) => {
-      state.value += 1
-    },
-    decrement: (state) => {
-      state.value -= 1
-    },
-    // Use the PayloadAction type to declare the contents of `action.payload`
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload
+      state.token += 1;
     },
   },
-})
+  extraReducers: (builder) => {
+    builder.addCase(signupAsync.pending, (state) => {
+      state.status = "loading"
+    })
+    builder.addCase(signupAsync.fulfilled, (state, action) => {
+      state.token = action.payload;
+      state.status = "idle";
+    })
+    builder.addCase(signupAsync.rejected, (state, action) => {
+      state.error = action.payload;
+      state.status = "idle";
+    })
+    builder.addCase(signinAsync.pending, (state) => {
+      state.status = "loading"
+    })
+    builder.addCase(signinAsync.fulfilled, (state, action) => {
+      state.token = action.payload;
+      state.status = "idle";
+    })
+    builder.addCase(signinAsync.rejected, (state, action) => {
+      state.error = action.payload;
+      state.status = "idle";
+    })
+  },
+});
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions
+export const { increment } = authSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectCount = (state: RootState) => state.counter.value
+export const selectToken = (state: RootState) => state.auth.token;
+export const selectError = (state: RootState) => state.auth.error;
+export const selectStatus = (state: RootState) => state.auth.status;
 
-export default counterSlice.reducer
+export default authSlice.reducer;

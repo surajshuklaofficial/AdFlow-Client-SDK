@@ -4,10 +4,11 @@ import { HIDE, VIEW } from "../../../assets";
 
 type InputProps = {
   placeholder: string;
-  // value: string;
+  register: any;
+  name: string
 };
 
-const PasswordInput: React.FC<InputProps> = ({ placeholder }) => {
+const PasswordInput: React.FC<InputProps> = ({ placeholder, register, name }) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleShowPassword = () => {
@@ -20,6 +21,7 @@ const PasswordInput: React.FC<InputProps> = ({ placeholder }) => {
         className="p-2 w-11/12"
         placeholder={placeholder}
         type={showPassword ? "text" : "password"}
+        {...register(name, { required: true })}
       />
       <button
         className="w-1/12 flex-center"

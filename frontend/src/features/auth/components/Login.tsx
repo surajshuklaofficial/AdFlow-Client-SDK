@@ -1,45 +1,75 @@
 import { Link } from "react-router-dom";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { useDispatch } from "react-redux";
 
 import PasswordInput from "./PasswordInput";
+import { UserAuthInfo } from "../../../app/api";
+import { signinAsync } from "../slice";
+import { Dispatch } from "../../../app/store";
 
 const Login = () => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<UserAuthInfo>();
+
+  const dispatch = useDispatch<Dispatch>();
+
+  const onSubmit: SubmitHandler<UserAuthInfo> = (data) => {
+    dispatch(signinAsync(data));
   };
 
   return (
     <div className="flex-center h-screen w-screen">
       <section className="flex flex-col lg:flex-row w-full sm:w-10/12 lg:w-4/5 h-screen sm:h-4/5 bg-secondary rounded-lg">
         <div className="bg-secondary text-white w-full lg:w-2/5 py-9 px-4 lg:px-16 rounded-[0.4rem] h-1/5 sm:h-auto">
-          <p className="lg:text-[5rem] text-3xl text-center lg:text-left font-bold lg:leading-[1.1]">Welcome to AdFlow!</p>
+          <p className="lg:text-[5rem] text-3xl text-center lg:text-left font-bold lg:leading-[1.1]">
+            Welcome to AdFlow!
+          </p>
         </div>
 
         <div className="bg-white lg:w-3/5 py-12 px-8 lg:px-24 flex flex-col gap-6 lg:rounded-[0.4rem] lg:rounded-l-2xl h-4/5 sm:h-auto">
-          <h2 className="text-4xl text-secondary mb-16 text-center lg:text-center">Login</h2>
+          <h2 className="text-4xl text-secondary mb-16 text-center lg:text-center">
+            Login
+          </h2>
           <form
             className="flex flex-col gap-4"
-            onSubmit={(e) => handleSubmit(e)}
+            onSubmit={handleSubmit(onSubmit)}
           >
-            <input className="p-2" placeholder="Email" type="email" />
+            <input
+              className="p-2"
+              placeholder="Email"
+              type="email"
+              {...register("email", { required: true })}
+            />
 
-            <PasswordInput placeholder="Enter Password" />
+            <PasswordInput
+              placeholder="Enter Password"
+              register={register}
+              name="password"
+            />
 
             <button
               className="bg-accent text-white py-2 px-4 font-bold"
               type="submit"
             >
-              Create Account
+              Login
             </button>
           </form>
 
           <div className="flex flex-col gap-2">
             <p className="text-center text-secondary font-semibold">
               Don't have an account?{" "}
-              <Link to="/signup" className="text-accent text-bold" replace={true}>
+              <Link
+                to="/signup"
+                className="text-accent text-bold"
+                replace={true}
+              >
                 Signup
               </Link>
             </p>
-            <p className="text-center text-secondary font-bold">-- Or --</p>
+            {/* <p className="text-center text-secondary font-bold">-- Or --</p>
 
             <div className="flex-center gap-8">
               <button className="rounded-full bg-accent text-white p-1 w-10 h-10 font-bold text-2xl flex-center">
@@ -48,7 +78,7 @@ const Login = () => {
               <button className="rounded-full bg-accent text-white p-1 w-10 h-10 font-bold text-2xl flex-center">
                 G
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

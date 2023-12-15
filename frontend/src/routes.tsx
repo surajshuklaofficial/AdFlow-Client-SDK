@@ -2,8 +2,8 @@ import React from 'react';
 import { createBrowserRouter, RouterProvider, RouteObject } from 'react-router-dom';
 
 import App from './App';
-import { LandingPage } from './pages';
-import { Login, Signup } from './features';
+import { LandingPage, Advertisers } from './pages';
+import { Dashboard, Login, PublishAd, Signup } from './features';
 
 const routerConfig: RouteObject[] = [
   {
@@ -21,6 +21,20 @@ const routerConfig: RouteObject[] = [
       {
         path: "/login",
         element: <Login />
+      },
+      {
+        path: "/advertiser",
+        element: <Advertisers />,
+        children: [
+          {
+            path: "dashboard",
+            element: <Dashboard />
+          },
+          {
+            path: "publish-ad",
+            element: <PublishAd />
+          }
+        ]
       }
     ],
   },
