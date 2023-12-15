@@ -1,38 +1,71 @@
-import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '../../app/store'
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import type { RootState } from "../../app/store";
+import { Ad, uploadAd, fetchAdsByAdvertiser } from "../../app/api";
 
 // Define a type for the slice state
-interface CounterState {
-  value: number
+interface AdvertiserSlice {
+  ads: [Object];
+  status: "idle" | "loading";
+  error: string;
 }
 
 // Define the initial state using that type
-const initialState: CounterState = {
-  value: 0,
-}
+const initialState: AdvertiserSlice = {
+  ads: [],
+  error: "",
+  status: "idle",
+};
 
-export const counterSlice = createSlice({
-  name: 'counter',
+export const uploadAdAsync = createAsyncThunk(
+  "advertiser/uploadAd",
+  async (adData: Ad) => {
+    const response = await uploadAd(adData);
+    return response.data;
+  }
+);
+
+export const fetchAdsByAdvertiserAsync = createAsyncThunk(
+  "advertiser/fetchAdAsyncByAdvertiser",
+  async (id: Number | null) => {
+    const response = await fetchAdsByAdvertiser(id);
+    return response.data;
+  }
+);
+
+export const advertiserSlice = createSlice({
+  name: "advertiser",
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
-  reducers: {
-    increment: (state) => {
-      state.value += 1
-    },
-    decrement: (state) => {
-      state.value -= 1
-    },
-    // Use the PayloadAction type to declare the contents of `action.payload`
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(uploadAdAsync.pending, (state) => {
+      state.status = "loading";
+    });
+    builder.addCase(uploadAdAsync.fulfilled, (state, action) => {
+      state.ads.push(action.payload);
+      state.status = "idle";
+    });
+    builder.addCase(uploadAdAsync.rejected, (state, action) => {
+      console.log(action.payload);
+      state.error = action.payload;
+      state.status = "idle";
+    })
+    builder.addCase(fetchAdsByAdvertiserAsync.pending, (state) => {
+      state.status = "loading";
+    });
+    builder.addCase(fetchAdsByAdvertiserAsync.fulfilled, (state, action) => {
+      state.ads = action.payload;
+      state.status = "idle";
+    });
+    builder.addCase(fetchAdsByAdvertiserAsync.rejected, (state, action) => {
+      console.log(action.payload);
+      state.error = action.payload;
+      state.status = "idle";
+    });
   },
-})
-
-export const { increment, decrement, incrementByAmount } = counterSlice.actions
+});
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectCount = (state: RootState) => state.counter.value
+export const selectAds = (state: RootState) => state.advertiser.ads;
 
-export default counterSlice.reducer
+export default advertiserSlice.reducer;

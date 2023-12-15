@@ -38,8 +38,8 @@ export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    increment: (state) => {
-      state.token += 1;
+    addToLocalStorage: (state, action) => {
+      localStorage.setItem("jwt_token", action.payload);
     },
   },
   extraReducers: (builder) => {
@@ -48,6 +48,8 @@ export const authSlice = createSlice({
     })
     builder.addCase(signupAsync.fulfilled, (state, action) => {
       state.token = action.payload;
+      localStorage.setItem("jwt_token", action.payload.id);
+      localStorage.setItem("role", action.payload.role);
       state.status = "idle";
     })
     builder.addCase(signupAsync.rejected, (state, action) => {
@@ -59,6 +61,8 @@ export const authSlice = createSlice({
     })
     builder.addCase(signinAsync.fulfilled, (state, action) => {
       state.token = action.payload;
+      localStorage.setItem("jwt_token", action.payload.id);
+      localStorage.setItem("role", action.payload.role);
       state.status = "idle";
     })
     builder.addCase(signinAsync.rejected, (state, action) => {

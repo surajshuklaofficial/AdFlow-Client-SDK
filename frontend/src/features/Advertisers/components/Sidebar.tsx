@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 const Sidebar: React.FC = () => {
   return (
-    <aside className="h-[90vh] w-[15.72rem] border-r-2 py-4 px-6 lg:block hidden">
+    <aside className="h-[90vh] w-[15.72rem] border-r-2 py-4 px-6 lg:block ">
       <ul className="flex flex-col h-4/5 text-secondary font-semibold gap-4 mt-16">
         <li className="hover:bg-secondary hover:text-white p-2 text-2xl">
           <NavLink

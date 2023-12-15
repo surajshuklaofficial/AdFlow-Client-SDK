@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import PasswordInput from "./PasswordInput";
 import { UserAuthInfo } from "../../../app/api";
@@ -15,10 +16,23 @@ const Login = () => {
   } = useForm<UserAuthInfo>();
 
   const dispatch = useDispatch<Dispatch>();
+  const navigate = useNavigate();
+
+  type Role = "advertiser" | "publisher";
+  const role: Role = useSelector((state) => state.auth.token.role);
 
   const onSubmit: SubmitHandler<UserAuthInfo> = (data) => {
     dispatch(signinAsync(data));
   };
+
+  useEffect(() => {
+    console.log(role);
+    if (role == "advertiser") {
+      navigate("/advertiser", { replace: true });
+    } else if (role == "publisher") {
+      navigate("/publisher", { replace: true });
+    }
+  }, [role, dispatch]);
 
   return (
     <div className="flex-center h-screen w-screen">

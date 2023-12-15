@@ -26,6 +26,16 @@ API.interceptors.request.use((req) => {
 // export const fetchContents = () => API.get('/contents');
 // export const deleteContent = (channelID: string) => API.delete(`/content/delete/${channelID}`);
 
+export interface Ad {
+  directingUrl: string;
+  adUrl: string;
+  id?: Number;
+  advertiser?: Number
+}
+
+export const uploadAd = (adData: Ad) => API.post("/ads", adData);
+export const fetchAdsByAdvertiser = (id: Number | null) => API.get("/ads?advertiser="+id);
+
 export interface UserAuthInfo {
   firstName?: string;
   lastName?: string;

@@ -1,13 +1,23 @@
+import { useState, useLayoutEffect } from "react";
 import { Outlet } from "react-router-dom";
+
 import { Header, Sidebar } from "../features";
 
 const Advertisers = () => {
+  const [isSidebarVisible, setIsSidebarVisible] = useState<boolean>(false);
+
+  useLayoutEffect(() => {
+    if(innerWidth > 1024) {
+      setIsSidebarVisible(true);
+    }
+  },[])
+
   return (
     <section className="h-screen">
-      <Header />
+      <Header setShowSidebar={setIsSidebarVisible} showSidebar={isSidebarVisible} />
 
       <div className="flex">
-        <Sidebar />
+        {isSidebarVisible && <Sidebar />}
         <Outlet />
       </div>
     </section>

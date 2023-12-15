@@ -3,12 +3,16 @@ import { useNavigate } from "react-router-dom";
 
 import { HAMBURGERMENU, CLOSE, PROFILE } from "../../../assets";
 
-const Header = () => {
-  const [toggle, setToggle] = useState<Boolean>(false);
+type HeaderProps = {
+  setShowSidebar: React.Dispatch<React.SetStateAction<boolean>>;
+  showSidebar: boolean;
+};
+
+const Header: React.FC<HeaderProps> = ({ setShowSidebar, showSidebar }) => {
   const navigate = useNavigate();
 
   const handleToggle = () => {
-    setToggle((prevValue) => !prevValue);
+    setShowSidebar((prevValue) => !prevValue);
   };
 
   return (
@@ -17,7 +21,8 @@ const Header = () => {
         <button className="" onClick={handleToggle}>
           <img
             className="w-9 h-9 bg-contain"
-            src={!toggle ? HAMBURGERMENU : CLOSE}
+            // src={!showSidebar ? HAMBURGERMENU : CLOSE}
+            src={HAMBURGERMENU}
             alt=""
           />
         </button>

@@ -1,41 +1,46 @@
-import React from 'react';
-import { createBrowserRouter, RouterProvider, RouteObject } from 'react-router-dom';
+import React from "react";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  RouteObject,
+} from "react-router-dom";
 
-import App from './App';
-import { LandingPage, Advertisers } from './pages';
-import { Dashboard, Login, PublishAd, Signup } from './features';
+import App from "./App";
+import { LandingPage, Advertisers } from "./pages";
+import { Dashboard, Login, PublishAd, Signup } from "./features";
 
 const routerConfig: RouteObject[] = [
   {
-    path: '/',
+    path: "/",
     element: <App />,
     children: [
       {
         index: true,
-        element: <LandingPage  />
+        element: <LandingPage />,
       },
       {
         path: "/signup",
-        element: <Signup />
+        element: <Signup />,
       },
       {
         path: "/login",
-        element: <Login />
+        element: <Login />,
       },
       {
         path: "/advertiser",
         element: <Advertisers />,
         children: [
+          { index: true, element: <Dashboard /> },
           {
             path: "dashboard",
-            element: <Dashboard />
+            element: <Dashboard />,
           },
           {
             path: "publish-ad",
-            element: <PublishAd />
-          }
-        ]
-      }
+            element: <PublishAd />,
+          },
+        ],
+      },
     ],
   },
 ];
