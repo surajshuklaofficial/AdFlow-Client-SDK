@@ -38,8 +38,10 @@ export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    addToLocalStorage: (state, action) => {
-      localStorage.setItem("jwt_token", action.payload);
+    signout: (state) => {
+      localStorage.removeItem("jwt_token");
+      localStorage.removeItem("role");
+      state.token = "";
     },
   },
   extraReducers: (builder) => {
@@ -72,7 +74,7 @@ export const authSlice = createSlice({
   },
 });
 
-export const { increment } = authSlice.actions;
+export const { signout } = authSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectToken = (state: RootState) => state.auth.token;

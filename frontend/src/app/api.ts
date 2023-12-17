@@ -30,11 +30,26 @@ export interface Ad {
   directingUrl: string;
   adUrl: string;
   id?: Number;
-  advertiser?: Number
+  advertiser?: string | null;
+  description: string;
+  title: string;
+  organisationName: string
+}
+
+export interface AdvertiserInfo {
+  firstName?: string;
+  lastName?: string;
+  email: string;
+  role: "advertiser"
 }
 
 export const uploadAd = (adData: Ad) => API.post("/ads", adData);
+export const updateAd = (adData: Ad) => API.patch("/ads/"+adData.id, adData);
 export const fetchAdsByAdvertiser = (id: Number | null) => API.get("/ads?advertiser="+id);
+export const fetchAd = (id: string) => API.get("/ads/"+id);
+export const fetchAdvertiserInfo = (jwt_token: string | null) => API.get("/users/"+jwt_token);
+export const deleteAd = (id: string) => API.delete(`/ads/${id}`);
+
 
 export interface UserAuthInfo {
   firstName?: string;

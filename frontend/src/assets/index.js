@@ -4,6 +4,9 @@ import VIEW from "./view.png";
 import HIDE from "./hide.png";
 import PROFILE from "./profile.png";
 import URL from "./url.png";
-import ADD from "./add.png"
+import ADD from "./add.png";
 
-export { HAMBURGERMENU, CLOSE, VIEW, HIDE, PROFILE, URL, ADD };
+import HERO from "./hero.jpg";
+import DASHBOARD from "./dashboard.png"
+
+export { HAMBURGERMENU, CLOSE, VIEW, HIDE, PROFILE, URL, ADD, HERO, DASHBOARD };

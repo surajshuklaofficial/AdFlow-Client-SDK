@@ -2,43 +2,40 @@ import { NavLink } from "react-router-dom";
 
 const Sidebar: React.FC = () => {
   return (
-    <aside className="h-[90vh] w-[15.72rem] border-r-2 py-4 px-6 lg:block ">
-      <ul className="flex flex-col h-4/5 text-secondary font-semibold gap-4 mt-16">
-        <li className="hover:bg-secondary hover:text-white p-2 text-2xl">
-          <NavLink
-            to="dashboard"
-            className={({ isActive, isPending }) =>
-              isPending ? "pending" : isActive ? "text-primary" : ""
-            }
-          >
-            Dashboard
-          </NavLink>
-        </li>
-        <li className="hover:bg-secondary hover:text-white p-2 text-2xl">
-          <NavLink
-            to="publish-ad"
-            className={({ isActive, isPending }) =>
-              isPending ? "pending" : isActive ? "text-primary" : ""
-            }
-          >
-            Ads
-          </NavLink>
-        </li>
-        <li className="hover:bg-secondary hover:text-white p-2 text-2xl">
-          <NavLink to="dashboard">Payments</NavLink>
-        </li>
-        <li className="hover:bg-secondary hover:text-white p-2 text-2xl">
-          <NavLink to="dashboard">Account</NavLink>
-        </li>
-        <li className="hover:bg-secondary hover:text-white p-2 text-2xl">
-          <NavLink to="dashboard">Chat with Us</NavLink>
-        </li>
-        <li className="hover:bg-secondary hover:text-white p-2 text-2xl">
-          <NavLink to="dashboard">Feedback</NavLink>
-        </li>
+    <aside className="min-h-[90vh] sm:min-w-[15.72rem] border-r-2 pt-8 px-6 block">
+      <ul className="flex flex-col h-4/5 text-primary font-semibold gap-4 mt-16 w-full">
+        <Element url="dashboard" name="Dashboard" />
+        <Element url="publish-ad" name="Your Ads" />
+        <Element url="accounts" name="Accounts" />
+        <Element url="payments" name="Payments" />
+        <Element url="chat" name="Chat with Us" />
+        <Element url="feedback" name="Feedback" />
       </ul>
     </aside>
   );
 };
+
+type ElementProp = {
+  url: string;
+  name: string;
+};
+
+const Element: React.FC<ElementProp> = ({ url, name }) => (
+  <li>
+    <NavLink
+      to={url}
+      className={({ isActive, isPending, isTransitioning }) =>
+        [
+          isPending ? "pending" : "",
+          isActive ? "border  bg-white shadow-sm text-secondary" : "",
+          isTransitioning ? "transitioning" : "",
+          "hover:border hover:bg-white hover:shadow-sm p-2 text-2xl w-full block rounded-md",
+        ].join(" ")
+      }
+    >
+      {name}
+    </NavLink>
+  </li>
+);
 
 export default Sidebar;

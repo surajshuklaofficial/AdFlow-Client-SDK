@@ -13,10 +13,10 @@ const Advertisers = () => {
   },[])
 
   return (
-    <section className="h-screen">
-      <Header setShowSidebar={setIsSidebarVisible} showSidebar={isSidebarVisible} />
+    <section className="min-h-screen bg-background pb-4 h-full">
+      <Header setShowSidebar={setIsSidebarVisible}/>
 
-      <div className="flex">
+      <div className="flex h-full">
         {isSidebarVisible && <Sidebar />}
         <Outlet />
       </div>

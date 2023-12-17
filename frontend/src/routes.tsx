@@ -6,13 +6,25 @@ import {
 } from "react-router-dom";
 
 import App from "./App";
-import { LandingPage, Advertisers } from "./pages";
-import { Dashboard, Login, PublishAd, Signup } from "./features";
+import { LandingPage, Advertisers, Publishers } from "./pages";
+import {
+  Dashboard,
+  Login,
+  PublishAd,
+  Signup,
+  ProtectedAdvertiser,
+  ProtectedPublisher,
+  PublisherPublishAd,
+  PublisherDashboard,
+  AdDetails,
+  Error
+} from "./features";
 
 const routerConfig: RouteObject[] = [
   {
     path: "/",
     element: <App />,
+    errorElement: <Error />,
     children: [
       {
         index: true,
@@ -28,7 +40,11 @@ const routerConfig: RouteObject[] = [
       },
       {
         path: "/advertiser",
-        element: <Advertisers />,
+        element: (
+          <ProtectedAdvertiser>
+            <Advertisers />
+          </ProtectedAdvertiser>
+        ),
         children: [
           { index: true, element: <Dashboard /> },
           {
@@ -38,6 +54,29 @@ const routerConfig: RouteObject[] = [
           {
             path: "publish-ad",
             element: <PublishAd />,
+          },
+          {
+            path: "ad-details/:id",
+            element: <AdDetails />
+          }
+        ],
+      },
+      {
+        path: "/publisher",
+        element: (
+          <ProtectedPublisher>
+            <Publishers />
+          </ProtectedPublisher>
+        ),
+        children: [
+          { index: true, element: <PublisherDashboard /> },
+          {
+            path: "dashboard",
+            element: <PublisherDashboard />,
+          },
+          {
+            path: "publish-ad",
+            element: <PublisherPublishAd />,
           },
         ],
       },

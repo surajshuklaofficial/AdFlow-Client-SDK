@@ -1,20 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
+import { Theme } from "@radix-ui/themes";
 
 import "./index.css";
 import Router from "./routes.tsx";
-import {store} from './app/store.ts';
-
+import { store } from "./app/store.ts";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router />
+      <Theme>
+        <Router />
+      </Theme>
     </Provider>
   </React.StrictMode>
 );
-
 
 // console.log("mode", import.meta.env.MODE);
 // console.log("url", import.meta.env.BASE_URL);

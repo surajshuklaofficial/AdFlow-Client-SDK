@@ -12,7 +12,7 @@
       "firstName": "suraj ",
       "lastName": "shukla",
       "email": "surajshukla5604@gmail.com",
-      "role": "advertiser",
+      "role": "publisher",
       "password": "123",
       "id": 2
     },
@@ -27,16 +27,28 @@
   ],
   "ads": [
     {
-      "adUrl": "https://www.designyourway.net/blog/wp-content/uploads/2010/11/Nike-Print-Ads-5.jpg",
-      "directingUrl": "https://surajshukla.vercel.app/",
-      "advertiser": 1,
-      "id": 1
-    },
-    {
       "adUrl": "https://tse1.mm.bing.net/th?id=OIP.9cXbiHHGV6drC_tObQRaiwHaKy&pid=Api&P=0&h=220",
       "directingUrl": "https://surajshukla.vercel.app/",
       "advertiser": 3,
       "id": 2
+    },
+    {
+      "adUrl": "https://www.designyourway.net/blog/wp-content/uploads/2010/11/Nike-Print-Ads-5.jpg",
+      "directingUrl": "https://surajshukla.vercel.app/",
+      "title": "Long Jump",
+      "description": "Generate Lorem Ipsum placeholder text for use in your graphic, print and web layouts.",
+      "organisationName": "surajshukla.com",
+      "advertiser": "1",
+      "id": 3
+    },
+    {
+      "adUrl": "https://www.designyourway.net/blog/wp-content/uploads/2010/11/Nike-Print-Ads-5.jpg",
+      "description": "Generate Lorem Ipsum placeholder text for use in your graphic, print and web layouts.",
+      "directingUrl": "https://surajshukla.vercel.app/",
+      "organisationName": "surajshukla.com",
+      "title": "Wear out loud but what",
+      "advertiser": "1",
+      "id": 4
     }
   ]
 }

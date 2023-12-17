@@ -29,7 +29,7 @@ const EnterAd: React.FC<EnterAdProps> = ({ handleEnterAd }) => {
 
   return (
     <div className="absolute z-10 bg-background flex flex-col top-1/2 right-1/2 translate-x-1/2 -translate-y-1/2 py-4 px-12 w-[32rem] h-96 justify-around items-center">
-      <h2 className="text-4xl text-secondary mb-16 text-center lg:text-center">
+      <h2 className="text-4xl text-primary mb-16 text-center lg:text-center">
         Add New Ad
       </h2>
       <form

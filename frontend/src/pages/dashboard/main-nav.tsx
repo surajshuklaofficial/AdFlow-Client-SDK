@@ -1,0 +1,40 @@
+import { Link } from "react-router-dom"
+
+import { cn } from "../../../common/lib/utils"
+
+export function MainNav({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLElement>) {
+  return (
+    <nav
+      className={cn("flex items-center space-x-4 lg:space-x-6", className)}
+      {...props}
+    >
+      <Link
+        to="/examples/dashboard"
+        className="text-sm font-medium transition-colors hover:text-secondary"
+      >
+        Overview
+      </Link>
+      <Link
+        to="/examples/dashboard"
+        className="text-sm font-medium text-muted-foreground transition-colors hover:text-secondary"
+      >
+        Customers
+      </Link>
+      <Link
+        to="/examples/dashboard"
+        className="text-sm font-medium text-muted-foreground transition-colors hover:text-secondary"
+      >
+        Products
+      </Link>
+      <Link
+        to="/examples/dashboard"
+        className="text-sm font-medium text-muted-foreground transition-colors hover:text-secondary"
+      >
+        Settings
+      </Link>
+    </nav>
+  )
+}

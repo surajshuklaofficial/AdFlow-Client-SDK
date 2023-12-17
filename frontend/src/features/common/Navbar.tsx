@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, NavLink } from "react-router-dom";
 
 import { HAMBURGERMENU, CLOSE } from "../../assets";
 
@@ -15,18 +15,28 @@ const Navbar = () => {
     <header className="flex justify-between items-center py-4 px-8 shadow-md">
       <figure>
         {/* <img src="" alt="" className="src" /> */}
-        <h1 className="text-4xl text-secondary" onClick={() => navigate("/")}>
+        <h1 className="text-4xl text-primary" onClick={() => navigate("/")}>
           <span className="text-accent">Ad</span>Flow
         </h1>
       </figure>
 
       <nav>
-        <ul className="hidden lg:flex gap-8 justify-between items-center font-medium text-secondary">
-          <li className="text-secondary">Home</li>
-          <li>Advertiser</li>
-          <li>Maker</li>
-          <li>Contact Us</li>
-          <li>Blog</li>
+        <ul className="hidden lg:flex gap-8 justify-between items-center font-medium text-primary">
+          <li className="text-primary">
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/advertiser">Advertiser</NavLink>
+          </li>
+          <li>
+            <NavLink to="">Publisher</NavLink>
+          </li>
+          <li>
+            <NavLink to="">Contact Us</NavLink>
+          </li>
+          <li>
+            <NavLink to="">Blog</NavLink>
+          </li>
           <li>
             <Link to="/login" className="text-accent py-2 px-4 font-bold">
               Sign in
@@ -49,9 +59,9 @@ const Navbar = () => {
         />
       </button>
       {toggle && (
-        <nav className="absolute top-16 right-20 border bg-background px-12 py-10">
-          <ul className="flex flex-col gap-8 justify-between items-center font-medium text-secondary lg:hidden">
-            <li className="text-secondary">Home</li>
+        <nav className="absolute top-16 right-20 border bg-background px-12 py-10 z-50">
+          <ul className="flex flex-col gap-8 justify-between items-center font-medium text-primary lg:hidden">
+            <li className="text-primary">Home</li>
             <li>Advertiser</li>
             <li>Maker</li>
             <li>Contact Us</li>

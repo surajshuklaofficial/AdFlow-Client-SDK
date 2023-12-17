@@ -45,15 +45,15 @@ const Signup = () => {
 
   return (
     <div className="flex-center h-screen w-screen">
-      <section className="flex flex-col lg:flex-row sm:w-10/12 lg:w-4/5 h-screen sm:h-4/5 bg-secondary rounded-lg">
-        <div className="bg-secondary text-white w-full lg:w-2/5 py-9 px-4 lg:px-16 rounded-[0.4rem] h-1/5 sm:h-auto">
+      <section className="flex flex-col lg:flex-row sm:w-10/12 lg:w-4/5 h-screen sm:h-4/5 bg-primary rounded-lg">
+        <div className="bg-primary text-white w-full lg:w-2/5 py-9 px-4 lg:px-16 rounded-[0.4rem] h-1/5 sm:h-auto">
           <p className="lg:text-[5rem] text-3xl text-center lg:text-left font-bold lg:leading-[1.1]">
             Monetize your work now!
           </p>
         </div>
 
         <div className="bg-white lg:w-3/5 py-12 px-8 lg:px-24 flex flex-col gap-6 lg:rounded-[0.4rem] lg:rounded-l-2xl h-4/5 sm:h-auto">
-          <h2 className="text-4xl text-secondary mb-16 text-center lg:text-center">
+          <h2 className="text-4xl text-primary mb-16 text-center lg:text-center">
             Create Account
           </h2>
           <form
@@ -92,8 +92,8 @@ const Signup = () => {
               name="confirmPassword"
             />
 
-            <div className="flex gap-2 justify-between items-center text-secondary">
-              <label className="text-secondary font-bold">Who are you:</label>
+            <div className="flex gap-2 justify-between items-center text-primary">
+              <label className="text-primary font-bold">Who are you:</label>
               <div className="flex gap-4 justify-between item-center font-[450]">
                 <label>
                   <input
@@ -123,7 +123,7 @@ const Signup = () => {
           </form>
 
           <div className="flex flex-col gap-2">
-            <p className="text-center text-secondary font-semibold">
+            <p className="text-center text-primary font-semibold">
               Already have an account?{" "}
               <Link
                 to="/login"
@@ -133,7 +133,7 @@ const Signup = () => {
                 Login
               </Link>
             </p>
-            {/* <p className="text-center text-secondary font-bold">-- Or --</p>
+            {/* <p className="text-center text-primary font-bold">-- Or --</p>
 
             <div className="flex-center gap-8">
               <button className="rounded-full bg-accent text-white p-1 w-10 h-10 font-bold text-2xl flex-center">

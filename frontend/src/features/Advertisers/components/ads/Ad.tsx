@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-import { URL } from "../../../assets";
-import { Ad } from "../../../app/api";
+import { URL } from "../../../../assets";
+import { Ad } from "../../../../app/api";
 
-const AdComponent: React.FC<Ad> = ({directingUrl, adUrl}) => {
+const AdComponent: React.FC<Ad> = ({directingUrl, adUrl, id}) => {
   const [isHovered, setIsHovered] = useState(false);
-
+  
   return (
-    <div className="border p-4 bg-white gap-2 flex flex-col w-72 h-[21rem]">
+    <div className="border p-4 bg-white gap-2 flex flex-col w-72 h-[21rem] relative z-0 shadow-lg  items-center rounded-md">
       <a
-        className="hover relative"
+        className="hover relative z-0"
         href={directingUrl}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -27,12 +28,13 @@ const AdComponent: React.FC<Ad> = ({directingUrl, adUrl}) => {
           alt="add-image-url"
         />
       </a>
-      <button
-        className="bg-accent text-white py-2 px-4 font-bold"
+      <Link
+        className="bg-accent text-white py-2 px-4 font-bold text-center w-full"
         type="submit"
+        to={`/advertiser/ad-details/${id}`}
       >
         Details
-      </button>
+      </Link>
     </div>
   );
 };
