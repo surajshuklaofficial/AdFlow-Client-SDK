@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 
+// TODO: custom scrollbar
 const App = () => {
   return (
     <div className="">
