@@ -7,7 +7,6 @@ import PasswordInput from "./PasswordInput";
 import { Role, UserAuthInfo } from "../../app/api";
 import { selectRole, signinAsync } from "./slice";
 import { Dispatch } from "../../app/store";
-import { HERO2 } from "../../assets";
 
 const Login = () => {
   const { register, handleSubmit } = useForm<UserAuthInfo>();
@@ -29,18 +28,15 @@ const Login = () => {
   }, [role, dispatch]);
 
   return (
-    <div
-      className="flex-center h-screen w-screen"
-      style={{
-        backgroundImage: `url(${HERO2})`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-      }}
-    >
-      <section className="flex flex-col justify-center items-center lg:flex-row w-full sm:w-10/12 lg:w-4/5 h-screen sm:h-4/5 bg-transparent rounded-lg">
-        
+    <div className="flex-center h-screen w-screen">
+      <section className="flex flex-col lg:flex-row w-full sm:w-10/12 lg:w-4/5 h-screen sm:h-4/5 bg-primary rounded-lg">
+        <div className="bg-primary text-white w-full lg:w-2/5 py-9 px-4 lg:px-16 rounded-[0.4rem] h-1/5 sm:h-auto">
+          <p className="lg:text-[5rem] text-3xl text-center lg:text-left font-bold lg:leading-[1.1]">
+            Welcome to AdFlow!
+          </p>
+        </div>
 
-        <div className="bg-white w-full sm:w-4/5 lg:w-3/5 py-12 px-8 lg:px-24 flex flex-col gap-6 shadow-2xl sm:rounded-xl">
+        <div className="bg-white lg:w-3/5 py-12 px-8 lg:px-24 flex flex-col gap-6 lg:rounded-[0.4rem] lg:rounded-l-2xl h-4/5 sm:h-auto">
           <h2 className="text-4xl text-primary mb-16 text-center lg:text-center">
             Login
           </h2>
@@ -80,7 +76,7 @@ const Login = () => {
                 Signup
               </Link>
             </p>
-            <p className="text-center text-primary font-bold">-- Or --</p>
+            {/* <p className="text-center text-primary font-bold">-- Or --</p>
 
             <div className="flex-center gap-8">
               <button className="rounded-full bg-accent text-white p-1 w-10 h-10 font-bold text-2xl flex-center">
@@ -89,7 +85,7 @@ const Login = () => {
               <button className="rounded-full bg-accent text-white p-1 w-10 h-10 font-bold text-2xl flex-center">
                 G
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

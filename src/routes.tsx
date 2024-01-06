@@ -14,9 +14,12 @@ import {
   Signup,
   ProtectedAdvertiser,
   ProtectedPublisher,
-  PublisherPublishAd,
   PublisherDashboard,
   AdDetails,
+  Account,
+  AdUnit,
+  CreateInFeed,
+  Sites
 } from "./features";
 
 const routerConfig: RouteObject[] = [
@@ -58,6 +61,10 @@ const routerConfig: RouteObject[] = [
             path: "ad-details/:id",
             element: <AdDetails />,
           },
+          {
+            path: "account",
+            element: <Account />,
+          },
         ],
       },
       {
@@ -74,8 +81,16 @@ const routerConfig: RouteObject[] = [
             element: <PublisherDashboard />,
           },
           {
-            path: "publish-ad",
-            element: <PublisherPublishAd />,
+            path: "your-site",
+            element: <Sites />
+          },
+          {
+            path: "ad-units",
+            element: <AdUnit />,
+          },
+          {
+            path: "create-ad-unit/in-feed",
+            element: <CreateInFeed />,
           },
         ],
       },

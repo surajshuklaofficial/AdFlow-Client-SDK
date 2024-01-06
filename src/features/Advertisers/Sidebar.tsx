@@ -6,7 +6,7 @@ const Sidebar = () => {
       <ul className="flex flex-col h-4/5 text-primary font-semibold gap-4 mt-16 w-full">
         <Element url="dashboard" name="Dashboard" />
         <Element url="publish-ad" name="Your Ads" />
-        <Element url="accounts" name="Accounts" />
+        <Element url="account" name="Accounts" />
         <Element url="payments" name="Payments" />
         <Element url="chat" name="Chat with Us" />
         <Element url="feedback" name="Feedback" />

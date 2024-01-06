@@ -8,8 +8,6 @@ import {
   selectAdvertiserInfo,
   fetchAdvertiserInfoAsync,
 } from "../../features/Advertisers/slice";
-import { Dispatch } from "../../app/store";
-import { AdvertiserInfo } from "../../app/api";
 
 type HeaderProps = {
   setShowSidebar: React.Dispatch<React.SetStateAction<boolean>>;
@@ -18,7 +16,7 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = ({ setShowSidebar }) => {
   const [accountVisible, setAccountVisible] = useState(false);
   const navigate = useNavigate();
-  const dispatch = useDispatch<Dispatch>();
+  const dispatch = useDispatch();
   const currentUrl = location.href;
   const advertiserInfo = useSelector(selectAdvertiserInfo);
 
@@ -84,14 +82,7 @@ const Header: React.FC<HeaderProps> = ({ setShowSidebar }) => {
   );
 };
 
-type Handler = () => void;
-interface Props {
-  handleSignout: Handler,
-  handleAccountBox: Handler,
-  advertiserInfo: AdvertiserInfo
-}
-
-const AccountBox = ({ advertiserInfo, handleSignout, handleAccountBox }: Props) => (
+const AccountBox = ({ advertiserInfo, handleSignout, handleAccountBox }) => (
   <>
     <div className="absolute right-12 sm:right-16 flex flex-col px-4 py-2 items-center z-50 bg-white shadow-lg rounded-md border">
       <div className="flex items-center gap-4 border-b pb-4">
