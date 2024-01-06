@@ -10,10 +10,13 @@ import Sidebar from "./Advertisers/Sidebar";
 import PublishAd from "./Advertisers/PublishAd";
 import Dashboard from "./Advertisers/Dashboard";
 import AdDetails from "./Advertisers/ads/AdDetails";
+import Account from "./Advertisers/Account";
 
-import PublisherSidebar from "./Publishers/components/Sidebar";
-import PublisherPublishAd from "./Publishers/components/PublishAd";
-import PublisherDashboard from "./Publishers/components/Dashboard";
+import PublisherSidebar from "./Publishers/Sidebar";
+import AdUnit from "./Publishers/AdUnit";
+import PublisherDashboard from "./Publishers/Dashboard";
+import CreateInFeed from "./Publishers/CreateInFeed";
+import Sites from "./Publishers/Sites";
 
 export {
   Navbar,
@@ -27,6 +30,9 @@ export {
   Dashboard,
   PublisherDashboard,
   PublisherSidebar,
-  PublisherPublishAd,
+  AdUnit,
   AdDetails,
+  Account,
+  CreateInFeed,
+  Sites
 };
