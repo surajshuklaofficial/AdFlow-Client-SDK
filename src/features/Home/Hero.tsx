@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 
 import { HERO } from "../../assets";
 
-const Home = () => {
+const Hero = () => {
   return (
-    <main className="py-4 px-8 flex-center h-[90vh] relative">
+    <main className="flex-center h-screen relative">
       <div className="flex-center flex-col gap-6 text-center mb-12 lg:mb-0 relative z-40">
         <h3
           className="text-6xl text-primary font-medium"
@@ -31,7 +31,7 @@ const Home = () => {
         </Link>
       </div>
       <div
-        className="absolute inset-1 opacity-90 blur-sm mt-1"
+        className="absolute inset-0 opacity-90 blur-sm"
         style={{
           backgroundImage: `url(${HERO})`,
           backgroundRepeat: "no-repeat",
@@ -42,4 +42,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Hero;

@@ -7,6 +7,7 @@ import URL from "./images/url.png";
 import ADD from "./images/add.png";
 
 import HERO from "./images/hero.jpg";
+import HERO2 from "./images/hero.jpg";
 import DASHBOARD from "./images/dashboard.png"
 
-export { HAMBURGERMENU, CLOSE, VIEW, HIDE, PROFILE, URL, ADD, HERO, DASHBOARD };
+export { HAMBURGERMENU, CLOSE, VIEW, HIDE, PROFILE, URL, ADD, HERO, DASHBOARD, HERO2 };

@@ -1,7 +1,7 @@
 import { useState, useLayoutEffect } from "react";
 import { Outlet } from "react-router-dom";
 
-import { PublisherSidebar } from "../features";
+import { Sidebar } from "../features";
 import Header from "../components/shared/Header";
 
 const Publishers = () => {
@@ -15,11 +15,11 @@ const Publishers = () => {
   }, []);
 
   return (
-    <section className="h-full min-h-screen">
+    <section className="h-screen">
       <Header setShowSidebar={setIsSidebarVisible} />
 
-      <div className="flex h-full">
-        {isSidebarVisible && <PublisherSidebar />}
+      <div className="flex">
+        {isSidebarVisible && <Sidebar />}
         <Outlet />
       </div>
     </section>

@@ -252,7 +252,7 @@ export function SelectCampaignState({dispatch}: {dispatch: Dispatch}) {
         <div>
           <EnterAd handleAdInput={() => handleCampaignStatusChange("active")} />
           <div
-            className="fixed inset-0 bg-white opacity-90 z-30"
+            className="fixed inset-0 bg-black opacity-75 z-30"
             onClick={() => handleCampaignStatusChange("active")}
           />
         </div>
