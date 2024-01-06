@@ -1,11 +1,8 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch} from "react-redux";
 
-import AdComponent from "./Ad";
-import { ADD } from "../../../assets";
-import EnterAd from "./EnterAd";
-import { fetchAdsByAdvertiserAsync, selectAds } from "../slice";
-import { Ad } from "../../../app/api";
+import { fetchAdsByAdvertiserAsync } from "../slice";
+import { Dispatch } from "../../../app/store";
 
 // interface AdData {
 //   adUrl: string;
@@ -14,18 +11,16 @@ import { Ad } from "../../../app/api";
 // }
 
 const PublishAd: React.FC = () => {
-  const [enterAd, setEnterAd] = useState<boolean>(false);
-  const ads: Ad[] = useSelector(selectAds);
-  const dispatch = useDispatch();
+  // const [enterAd, setEnterAd] = useState<boolean>(false);
+  // const ads: Ad[] = useSelector(selectAds);
+  const dispatch = useDispatch<Dispatch>();
 
-  const handleEnterAd = () => {
-    setEnterAd((prevState) => !prevState);
-  };
+  // const handleEnterAd = () => {
+  //   setEnterAd((prevState) => !prevState);
+  // };
 
-  useEffect(() => { 
-    const jwt_token: string | null = JSON.parse(
-      localStorage.getItem("jwt_token")
-    );
+  useEffect(() => {
+    const jwt_token: string | null = localStorage.getItem("jwt_token");
 
     if (!jwt_token) {
       console.error("JWT token not found");
@@ -35,11 +30,7 @@ const PublishAd: React.FC = () => {
     dispatch(fetchAdsByAdvertiserAsync(jwt_token));
   }, [dispatch]);
 
-  return (
-    <div className="mt-24 lg:mt-28">
-      hi
-    </div>
-  );
+  return <div className="mt-24 lg:mt-28">hi</div>;
 };
 
 export default PublishAd;

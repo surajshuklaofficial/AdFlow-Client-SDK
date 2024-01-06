@@ -15,7 +15,7 @@ import {
 interface AdvertiserSlice {
   ads: Ad[];
   status: "idle" | "loading";
-  error: any;
+  error: any; // manage errors
   advertiserInfo: AdvertiserInfo;
   ad?: Ad;
 }

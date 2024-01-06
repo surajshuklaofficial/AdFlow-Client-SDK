@@ -13,15 +13,12 @@ const EnterAd: React.FC<EnterAdProps> = ({ handleEnterAd }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
   } = useForm<Ad>();
 
   const dispatch = useDispatch<Dispatch>();
 
   const onSubmit: SubmitHandler<Ad> = (data) => {
-    const jwt_token: Number | undefined = JSON.parse(
-      localStorage.getItem("jwt_token")
-    );
+    const jwt_token: string | null = localStorage.getItem("jwt_token");
 
     dispatch(uploadAdAsync({ ...data, advertiser: jwt_token }));
     handleEnterAd();

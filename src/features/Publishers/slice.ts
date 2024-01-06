@@ -12,7 +12,7 @@ import {
 interface AdvertiserSlice {
   ads: Ad[];
   status: "idle" | "loading";
-  error: string;
+  error: any; // TODO: manage errors
   advertiserInfo: AdvertiserInfo;
 }
 
@@ -39,7 +39,7 @@ export const uploadAdAsync = createAsyncThunk(
 
 export const fetchAdsByAdvertiserAsync = createAsyncThunk(
   "advertiser/fetchAdsAsyncByAdvertiser",
-  async (id: Number | null) => {
+  async (id: string | null) => {
     const response = await fetchAdsByAdvertiser(id);
     return response.data;
   }
@@ -67,7 +67,6 @@ export const advertiserSlice = createSlice({
       state.status = "idle";
     });
     builder.addCase(uploadAdAsync.rejected, (state, action) => {
-      console.log(action.payload);
       state.error = action.payload;
       state.status = "idle";
     });
