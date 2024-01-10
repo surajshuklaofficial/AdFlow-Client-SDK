@@ -1,22 +1,19 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import type { RootState } from "../../app/store";
+import type { RootState } from "../../../app/store";
 import {
-  Ad,
   uploadAd,
   fetchAdsByAdvertiser,
-  fetchAdvertiserInfo,
-  AdvertiserInfo,
   deleteAd,
   fetchAd,
   updateAd,
-} from "../../app/api";
+} from "../../../app/api";
+import { Ad } from "../../../app/types";
 
 // Define a type for the slice state
 interface AdvertiserSlice {
   ads: Ad[];
   status: "idle" | "loading";
   error: any; // manage errors
-  advertiserInfo: AdvertiserInfo;
   ad?: Ad;
 }
 
@@ -25,12 +22,6 @@ const initialState: AdvertiserSlice = {
   ads: [],
   error: "",
   status: "idle",
-  advertiserInfo: {
-    email: "",
-    role: "advertiser",
-    firstName: "",
-    lastName: "",
-  },
 };
 
 export const uploadAdAsync = createAsyncThunk<Ad, Ad>(
@@ -80,14 +71,6 @@ export const updateAdAsync = createAsyncThunk(
   }
 );
 
-export const fetchAdvertiserInfoAsync = createAsyncThunk(
-  "advertiser/fetchAdvertiserInfo",
-  async (jwt_token: string | null) => {
-    const response = await fetchAdvertiserInfo(jwt_token);
-    return response.data;
-  }
-);
-
 export const advertiserSlice = createSlice({
   name: "advertiser",
   // `createSlice` will infer the state type from the `initialState` argument
@@ -100,55 +83,43 @@ export const advertiserSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(uploadAdAsync.pending, (state) => {
       state.status = "loading";
-    });
+    })
     builder.addCase(uploadAdAsync.fulfilled, (state, action) => {
       state.ads.push(action.payload);
       state.status = "idle";
-    });
+    })
     builder.addCase(uploadAdAsync.rejected, (state, action) => {
       console.log(action.payload);
       state.error = action.payload;
       state.status = "idle";
-    });
+    })
     builder.addCase(fetchAdAsync.pending, (state) => {
       state.status = "loading";
-    });
+    })
     builder.addCase(fetchAdAsync.fulfilled, (state, action) => {
       state.ad = action.payload;
       state.status = "idle";
-    });
+    })
     builder.addCase(fetchAdAsync.rejected, (state, action) => {
       console.log(action.payload);
       state.error = action.payload;
       state.status = "idle";
-    });
+    })
     builder.addCase(fetchAdsByAdvertiserAsync.pending, (state) => {
       state.status = "loading";
-    });
+    })
     builder.addCase(fetchAdsByAdvertiserAsync.fulfilled, (state, action) => {
       state.ads = action.payload;
       state.status = "idle";
-    });
+    })
     builder.addCase(fetchAdsByAdvertiserAsync.rejected, (state, action) => {
       console.log(action.payload);
       state.error = action.payload;
       state.status = "idle";
-    });
-    builder.addCase(fetchAdvertiserInfoAsync.pending, (state) => {
-      state.status = "loading";
-    });
-    builder.addCase(fetchAdvertiserInfoAsync.fulfilled, (state, action) => {
-      state.advertiserInfo = action.payload;
-      state.status = "idle";
-    });
-    builder.addCase(fetchAdvertiserInfoAsync.rejected, (state, action) => {
-      console.log(action.payload);
-      state.error = action.payload;
-      state.status = "idle";
-    });
+    })
     builder.addCase(deleteAdAsync.pending, (state) => {
       state.status = "loading";
-    });
+    })
     builder.addCase(deleteAdAsync.fulfilled, (state, action) => {
       // state.ads.findIndex(ad => ad.id === action.payload.id);
       console.log(
@@ -157,7 +128,7 @@ export const advertiserSlice = createSlice({
       );
       state.ads = state.ads.filter((ad) => ad.id !== action.payload.id);
       state.status = "idle";
-    });
+    })
     builder.addCase(deleteAdAsync.rejected, (state, action) => {
       console.log(action.payload);
       state.error = action.payload;
@@ -171,7 +142,5 @@ export const { removeAd } = advertiserSlice.actions;
 // Other code such as selectors can use the imported `RootState` type
 export const selectAds = (state: RootState) => state.advertiser.ads;
 export const selectAd = (state: RootState) => state.advertiser.ad;
-export const selectAdvertiserInfo = (state: RootState) =>
-  state.advertiser.advertiserInfo;
 
 export default advertiserSlice.reducer;

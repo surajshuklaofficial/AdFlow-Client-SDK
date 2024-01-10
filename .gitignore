@@ -1,6 +1,9 @@
 node_modules
 .env.local
 .env
+proxy-server
+ad-server
+adBlocks
 
 # Logs
 logs

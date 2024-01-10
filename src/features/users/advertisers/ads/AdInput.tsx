@@ -1,11 +1,11 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Dispatch } from "../../../app/store";
-import { Ad } from "../../../app/api";
+import { Dispatch } from "../../../../app/store";
 import { fetchAdAsync, selectAd, uploadAdAsync, removeAd, updateAdAsync } from "../slice";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Ad } from "../../../../app/types";
 
 type AdInputProps = {
   handleAdInput: () => void;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { URL } from "../../../assets";
+import { URL } from "../../../../assets";
 
 export interface Ad {
   directingUrl: string;

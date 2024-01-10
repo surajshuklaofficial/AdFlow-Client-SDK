@@ -1,10 +1,11 @@
 import { useState, useLayoutEffect } from "react";
 import { Outlet } from "react-router-dom";
 
-import { PublisherSidebar } from "../features";
-import Header from "../components/shared/Header";
+import Header from "../features/users/shared/Header";
+import { sidebarOptionsPublisher } from "../app/constant";
+import Sidebar from "../features/users/shared/Sidebar";
 
-const Publishers = () => {
+const PublisherPage = () => {
   const [isSidebarVisible, setIsSidebarVisible] = useState<boolean>(false);
 
   // sidebar is not visible for width < 1024 in first render
@@ -15,15 +16,15 @@ const Publishers = () => {
   }, []);
 
   return (
-    <section className="h-full min-h-screen">
+    <div className="h-full min-h-screen">
       <Header setShowSidebar={setIsSidebarVisible} />
 
       <div className="flex h-full">
-        {isSidebarVisible && <PublisherSidebar />}
+        {isSidebarVisible && <Sidebar options={sidebarOptionsPublisher}/>}
         <Outlet />
       </div>
-    </section>
+    </div>
   );
 };
 
-export default Publishers;
+export default PublisherPage;

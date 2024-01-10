@@ -1,22 +1,20 @@
-import Navbar from "./Home/Navbar";
-import Home from "./Home/Hero";
+import Navbar from "./home/Navbar";
+import Home from "./home/Hero";
 
 import Login from "./auth/Login";
 import Signup from "./auth/Signup";
 import ProtectedAdvertiser from "./auth/ProtectedAdvertiser";
 import ProtectedPublisher from "./auth/ProtectedPublisher";
 
-import Sidebar from "./Advertisers/Sidebar";
-import PublishAd from "./Advertisers/PublishAd";
-import Dashboard from "./Advertisers/Dashboard";
-import AdDetails from "./Advertisers/ads/AdDetails";
-import Account from "./Advertisers/Account";
+import PublishAd from "./users/advertisers/PublishAd";
+import Dashboard from "./users/advertisers/Dashboard";
+import AdDetails from "./users/advertisers/ads/AdDetails";
+import Account from "./users/advertisers/Account";
 
-import PublisherSidebar from "./Publishers/Sidebar";
-import AdUnit from "./Publishers/AdUnit";
-import PublisherDashboard from "./Publishers/Dashboard";
-import CreateInFeed from "./Publishers/CreateInFeed";
-import Sites from "./Publishers/Sites";
+import AdUnit from "./users/publishers/components/AdUnit";
+import PublisherDashboard from "./users/publishers/Dashboard";
+import CreateInFeed from "./users/publishers/CreateInFeed";
+import Sites from "./users/publishers/Sites";
 
 export {
   Navbar,
@@ -25,11 +23,9 @@ export {
   ProtectedAdvertiser,
   ProtectedPublisher,
   Home,
-  Sidebar,
   PublishAd,
   Dashboard,
   PublisherDashboard,
-  PublisherSidebar,
   AdUnit,
   AdDetails,
   Account,

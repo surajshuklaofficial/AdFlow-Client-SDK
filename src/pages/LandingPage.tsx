@@ -1,9 +1,7 @@
 import { Navbar, Home } from "../features";
-import Footer from "../features/Home/Footer";
+import Footer from "../features/home/Footer";
 
-type Props = {};
-
-const LandingPage: React.FC<Props> = () => {
+const LandingPage = () => {
   return (
     <>
       <Navbar />

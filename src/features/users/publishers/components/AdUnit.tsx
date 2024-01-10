@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
+import { adTypes } from "../../../../app/constant";
 
 const AdUnit = () => {
+  console.log(adTypes)
   return (
     <section className="mt-20 p-4 w-full">
       <div>
         <h3 className="text-xl font-medium">Create new ad Unit</h3>
         <div className="flex gap-8 m-1 mt-8 lg:m-8">
-          <AdBlockType />
-          <AdBlockType />
-          <AdBlockType />
+          {adTypes.map((adTypes) => (
+            <AdBlockType {...adTypes} key={adTypes.id}/>
+          ))}
         </div>
       </div>
       <div className="w-full mt-20">
@@ -23,7 +25,8 @@ const AdUnit = () => {
   );
 };
 
-const AdBlockType = () => (
+// full-page-add, bottom-bar-ad
+const AdBlockType = ({name, description, image}) => (
   <Link to="/publisher/create-ad-unit/in-feed">
     <article className="border rounded-lg flex flex-col gap-4 p-4 shadow-sm hover:shadow-lg w-52">
       <div>
@@ -33,14 +36,14 @@ const AdBlockType = () => (
       </div>
       <div>
         <img
-          src="https://ssl.gstatic.com/adsense/apps/static/adsense3_antipasti_server_20231210-12_RC00/common/ads.adsense.fe.myads.ad_units.components.formats_overview/images/display.svg"
-          alt=""
+          src={image}
+          alt="ad-banner-image"
         />
       </div>
       <div className="flex flex-col gap-1">
-        <h4 className="font-medium">In-feed ads</h4>
+        <h4 className="font-medium">{name}</h4>
         <p className="text-gray-500 text-xs">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+          {description}.
         </p>
       </div>
     </article>

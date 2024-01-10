@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import AdComponent from "./ads/Ad";
-import { ADD } from "../../assets";
+import { ADD } from "../../../assets";
 import EnterAd from "./ads/AdInput";
 import { fetchAdsByAdvertiserAsync, selectAds } from "./slice";
-import { Ad } from "../../app/api";
-import { Dispatch } from "../../app/store";
+import { Dispatch } from "../../../app/store";
+import { Ad } from "../../../app/types";
 
 const PublishAd = () => {
   const [enterAd, setEnterAd] = useState<boolean>(false);

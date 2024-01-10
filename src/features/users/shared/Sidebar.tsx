@@ -1,23 +1,22 @@
 import { NavLink } from "react-router-dom";
 
-const Sidebar = () => {
-  return (
-    <aside className="min-h-[90vh] sm:min-w-[15.72rem] border-r-2 pt-8 px-6 block">
-      <ul className="flex flex-col h-4/5 text-primary font-semibold gap-4 mt-16 w-full">
-        <Element url="dashboard" name="Dashboard" />
-        <Element url="publish-ad" name="Your Ads" />
-        <Element url="accounts" name="Accounts" />
-        <Element url="payments" name="Payments" />
-        <Element url="chat" name="Chat with Us" />
-        <Element url="feedback" name="Feedback" />
-      </ul>
-    </aside>
-  );
-};
-
 type ElementProp = {
   url: string;
   name: string;
+};
+
+const Sidebar = ({ options }: { options: ElementProp[] }) => {
+  return (
+    <aside className="min-h-[90vh] sm:min-w-[15.72rem] border-r-2 pt-8 px-6 block">
+      <ul className="flex flex-col h-4/5 text-primary font-semibold gap-4 mt-16 w-full">
+        {
+          options.map((option) => (
+            <Element {...option} />
+          ))
+        }
+      </ul>
+    </aside>
+  );
 };
 
 const Element: React.FC<ElementProp> = ({ url, name }) => (

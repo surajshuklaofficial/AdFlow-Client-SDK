@@ -1,10 +1,11 @@
 import { useState, useLayoutEffect } from "react";
 import { Outlet } from "react-router-dom";
 
-import { Sidebar } from "../features";
-import Header from "../components/shared/Header";
+import Header from "../features/users/shared/Header";
+import { sidebarOptionsAdvertiser } from "../app/constant";
+import Sidebar from "../features/users/shared/Sidebar";
 
-const Advertisers = () => {
+const AdvertiserPage = () => {
   const [isSidebarVisible, setIsSidebarVisible] = useState<boolean>(false);
 
   // sidebar is not visible for width < 1024 in first render
@@ -15,15 +16,15 @@ const Advertisers = () => {
   }, []);
 
   return (
-    <section className="min-h-screen bg-background pb-4 h-full">
+    <div className="min-h-screen bg-background pb-4 h-full">
       <Header setShowSidebar={setIsSidebarVisible} />
 
       <div className="flex h-full">
-        {isSidebarVisible && <Sidebar />}
+        {isSidebarVisible && <Sidebar options={sidebarOptionsAdvertiser}/>}
         <Outlet />
       </div>
-    </section>
+    </div>
   );
 };
 
-export default Advertisers;
+export default AdvertiserPage;

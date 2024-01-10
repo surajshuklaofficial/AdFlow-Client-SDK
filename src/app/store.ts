@@ -1,11 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "../features/auth/slice";
-import advertiserSlice from "../features/Advertisers/slice";
+import advertiserSlice from "../features/users/advertisers/slice";
+import userSlice from "../features/users/slice";
+import publisherSlice from "../features/users/publishers/slice";
+
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
-    advertiser: advertiserSlice
+    advertiser: advertiserSlice,
+    publisher: publisherSlice,
+    user: userSlice
   },
 });
 

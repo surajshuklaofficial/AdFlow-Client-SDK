@@ -1,21 +1,21 @@
-import { Button } from "../../components/ui/button";
+import { Button } from "../../../components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../../components/ui/card";
+} from "../../../components/ui/card";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "../../components/ui/tabs";
-import { CalendarDateRangePicker } from "../../components/dashboard/date-range-picker";
-import { Overview } from "../../components/dashboard/overview";
-import { RecentSales } from "../../components/dashboard/recent-sales";
-import { DASHBOARD } from "../../assets";
+} from "../../../components/ui/tabs";
+import { CalendarDateRangePicker } from "../../../components/dashboard/date-range-picker";
+import { Overview } from "../../../components/dashboard/overview";
+import { RecentSales } from "../../../components/dashboard/recent-sales";
+import { DASHBOARD } from "../../../assets";
 
 const Dashboard = () => {
   return (

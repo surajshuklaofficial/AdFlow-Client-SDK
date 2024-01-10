@@ -6,17 +6,17 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../../../components/ui/card";
+} from "../../../../components/ui/card";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "../../../components/ui/tabs";
+} from "../../../../components/ui/tabs";
 
-import { CalendarDateRangePicker } from "../../../components/dashboard/date-range-picker";
-import { Overview } from "../../../components/dashboard/overview";
-import { RecentSales } from "../../../components/dashboard/recent-sales";
+import { CalendarDateRangePicker } from "../../../../components/dashboard/date-range-picker";
+import { Overview } from "../../../../components/dashboard/overview";
+import { RecentSales } from "../../../../components/dashboard/recent-sales";
 
 import {
   Select,
@@ -25,12 +25,12 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../components/ui/select";
+} from "../../../../components/ui/select";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deleteAdAsync } from "../slice";
 import EnterAd from "./AdInput";
-import { Dispatch } from "../../../app/store";
+import { Dispatch } from "../../../../app/store";
 
 const ad = {
   adUrl:

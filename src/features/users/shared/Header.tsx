@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { HAMBURGERMENU, PROFILE } from "../../assets";
-import { signout } from "../../features/auth/slice";
+import { HAMBURGERMENU, PROFILE } from "../../../assets";
+import { signout } from "../../auth/slice";
 
-import {
-  selectAdvertiserInfo,
-  fetchAdvertiserInfoAsync,
-} from "../../features/Advertisers/slice";
-import { Dispatch } from "../../app/store";
-import { AdvertiserInfo } from "../../app/api";
+import { Dispatch } from "../../../app/store";
+import { fetchuserInfoAsync, selectuserInfo } from "../slice";
+import { userInfo } from "../../../app/types";
 
 type HeaderProps = {
   setShowSidebar: React.Dispatch<React.SetStateAction<boolean>>;
@@ -20,7 +17,7 @@ const Header: React.FC<HeaderProps> = ({ setShowSidebar }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch<Dispatch>();
   const currentUrl = location.href;
-  const advertiserInfo = useSelector(selectAdvertiserInfo);
+  const userInfo = useSelector(selectuserInfo);
 
   const handleToggle = () => {
     setShowSidebar((prevValue) => !prevValue);
@@ -37,7 +34,7 @@ const Header: React.FC<HeaderProps> = ({ setShowSidebar }) => {
 
   useEffect(() => {
     const jwt_token: string | null = localStorage.getItem("jwt_token");
-    dispatch(fetchAdvertiserInfoAsync(jwt_token));
+    dispatch(fetchuserInfoAsync(jwt_token));
   }, [dispatch]);
 
   return (
@@ -74,7 +71,7 @@ const Header: React.FC<HeaderProps> = ({ setShowSidebar }) => {
 
         {accountVisible && (
           <AccountBox
-            advertiserInfo={advertiserInfo}
+            userInfo={userInfo}
             handleSignout={handleSignout}
             handleAccountBox={handleAccountBox}
           />
@@ -88,10 +85,10 @@ type Handler = () => void;
 interface Props {
   handleSignout: Handler,
   handleAccountBox: Handler,
-  advertiserInfo: AdvertiserInfo
+  userInfo: userInfo
 }
 
-const AccountBox = ({ advertiserInfo, handleSignout, handleAccountBox }: Props) => (
+const AccountBox = ({ userInfo, handleSignout, handleAccountBox }: Props) => (
   <>
     <div className="absolute right-12 sm:right-16 flex flex-col px-4 py-2 items-center z-50 bg-white shadow-lg rounded-md border">
       <div className="flex items-center gap-4 border-b pb-4">
@@ -102,10 +99,10 @@ const AccountBox = ({ advertiserInfo, handleSignout, handleAccountBox }: Props) 
         />
         <div className="text-primary">
           <h4 className="text-xl font-bold capitalize">
-            {advertiserInfo.firstName} {advertiserInfo.lastName}
+            {userInfo.firstName} {userInfo.lastName}
           </h4>
           <h5 className="text-sm text-gray-500 lowercase">
-            {advertiserInfo.email}
+            {userInfo.email}
           </h5>
           <Link to="account" className="text-secondary hover:text-accent">
             My Account

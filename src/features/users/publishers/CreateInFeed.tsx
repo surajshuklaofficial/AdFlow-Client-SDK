@@ -1,8 +1,8 @@
 import { useState } from "react";
-import HorizontalAd from "../../components/shared/AdBlocks/Horizontal";
-import SquareAd from "../../components/shared/AdBlocks/Square";
-import VerticalAd from "../../components/shared/AdBlocks/Vertical";
-import { Button } from "../../components/ui/button";
+import HorizontalAd from "../../../components/shared/AdBlocks/Horizontal";
+import SquareAd from "../../../components/shared/AdBlocks/Square";
+import VerticalAd from "../../../components/shared/AdBlocks/Vertical";
+import { Button } from "../../../components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -10,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../../components/ui/dialog";
-import { Input } from "../../components/ui/input";
+} from "../../../components/ui/dialog";
+import { Input } from "../../../components/ui/input";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "../../components/ui/tabs";
+} from "../../../components/ui/tabs";
 
 const CreateInFeed = () => {
   return (
@@ -31,7 +31,7 @@ const CreateInFeed = () => {
             <TabsTrigger value="square">Square</TabsTrigger>
           </TabsList>
         </div>
-        <TabsContent value="horizontal" >
+        <TabsContent value="horizontal">
           <HorizontalAd />
         </TabsContent>
         <TabsContent value="vertical" className="flex-center">
@@ -43,7 +43,7 @@ const CreateInFeed = () => {
       </Tabs>
 
       <div className="border-l px-12 flex items-center flex-col justify-between">
-        <Input type="text" placeholder="name"/>
+        <Input type="text" placeholder="name" />
         <GetCodeButton />
       </div>
     </div>
@@ -54,7 +54,7 @@ function GetCodeButton() {
   const [isCopied, setIsCopied] = useState(false);
 
   const adScript = `
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1232860056460853"></script>
+  <script async src="http://localhost:5500/ad-script.js"></script>
   `;
 
   const handleCopyClick = async () => {

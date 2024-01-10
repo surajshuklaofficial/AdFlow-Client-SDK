@@ -50,5 +50,37 @@
       "advertiser": "1",
       "id": 4
     }
+  ],
+  "websites": [
+    {
+      "websiteName": "surajshukla.vercel.app",
+      "user": "2",
+      "id": 1
+    },
+    {
+      "websiteName": "surajshukla.vercel.app",
+      "user": "2",
+      "id": 2
+    },
+    {
+      "websiteName": "google.com",
+      "user": "2",
+      "id": 3
+    },
+    {
+      "websiteName": "google.com",
+      "user": "2",
+      "id": 4
+    },
+    {
+      "websiteName": "google.com",
+      "user": "2",
+      "id": 5
+    },
+    {
+      "websiteName": "facebook.com",
+      "user": "2",
+      "id": 6
+    }
   ]
 }
